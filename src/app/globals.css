@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+}
+
+body {
+  background: #1a0f00;
+  color: #f5e7d4;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-orange-500 via-amber-500 to-yellow-500 bg-clip-text text-transparent;
+  }
+
+  .border-gradient {
+    position: relative;
+    background: linear-gradient(#1a0f00, #1a0f00) padding-box,
+                linear-gradient(135deg, #ff7f00, #ffaa00, #ffdd00) border-box;
+    border: 2px solid transparent;
+  }
+
+  .glow-box {
+    box-shadow: 
+      0 0 20px rgba(255, 127, 0, 0.3),
+      0 0 40px rgba(255, 127, 0, 0.2),
+      inset 0 0 20px rgba(255, 127, 0, 0.1);
+  }
+
+  .scan-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba(255, 127, 0, 0.8), 
+      transparent
+    );
+    animation: scan 8s linear infinite;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a0f00;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff7f00, #ffaa00);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ffaa00, #ffdd00);
+}
+
+/* Button hover effect */
+.btn-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn-hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-hover:hover::before {
+  left: 100%;
+}
